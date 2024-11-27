@@ -1,5 +1,6 @@
 import logo from '../assets/logo.png';
 import { Button } from './ui/button';
+import { useState } from 'react';
 
 // images ==
 import heroImage from '../assets/hero_img.png';
@@ -10,45 +11,123 @@ import safePalLogo from '../assets/safepal.png';
 import walletConnectLogo from '../assets/walletconnect.png';
 
 const Header = () => {
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+  const toggleMobileMenu = () => {
+    setIsMobileMenuOpen(!isMobileMenuOpen);
+  };
+
   return (
     <>
-      <header className='flex items-center justify-between px-[10rem] py-[4rem]  text-white bg-gradient-to-r '>
-        <div className='flex items-center'>
-          <img src={logo} alt='Logo' className='h-10 mr-2' />
+      <header className='fixed top-0 left-0 right-0 md:flex flex-col md:flex-row items-center justify-between px-1 md:px-[8rem] md:py-[1.5rem] text-white shadow-lg bg-[#23054d] z-50'>
+        <div className='flex justify-between px-4 p-4  '>
+          <div>
+            {' '}
+            <img src={logo} alt='Logo' className='h-10 md:h-12 mr-2' />
+          </div>
+          <div className='md:hidden'>
+            <button
+              className='text-white focus:outline-none'
+              onClick={toggleMobileMenu}
+            >
+              ☰
+            </button>
+          </div>
         </div>
-        <nav className='hidden md:flex space-x-4'>
-          <ul className='flex items-center justify-center space-x-[2.5rem]'>
+        <nav className='hidden md:flex space-x-6'>
+          <ul className='flex items-center justify-center space-x-6'>
             <li>
-              <a href='#marketplace' className=''>
+              <a
+                href='#marketplace'
+                className='hover:text-[#2F80ED] transition duration-300'
+              >
                 Marketplace
               </a>
             </li>
             <li>
-              <a href='#collection' className=''>
+              <a
+                href='#collection'
+                className='hover:text-[#2F80ED] transition duration-300'
+              >
                 Collection
               </a>
             </li>
             <li>
-              <a href='#community' className=''>
+              <a
+                href='#community'
+                className='hover:text-[#2F80ED] transition duration-300'
+              >
                 Community
               </a>
             </li>
             <li>
-              <a href='#create' className=''>
+              <a
+                href='#create'
+                className='hover:text-[#2F80ED] transition duration-300'
+              >
                 Create
               </a>
             </li>
-            <Button className='text-white rounded-full p-4 bg-[#2F80ED] hover:bg-white hover:text-[#2F80ED]'>
-              Connect Wallet
-            </Button>
+            <li>
+              <Button className='text-white rounded-full p-4 bg-[#2F80ED] hover:bg-white hover:text-[#2F80ED] transition duration-300'>
+                Connect Wallet
+              </Button>
+            </li>
           </ul>
         </nav>
-        <div className='md:hidden'>
-          <button className='text-white focus:outline-none'>
-            {/* Add a hamburger icon here if needed */}☰
-          </button>
-        </div>
       </header>
+
+      <div
+        className={`fixed inset-0 bg-[#23054d]  z-50 transition-transform transform ${
+          isMobileMenuOpen ? 'translate-x-0' : '-translate-x-full'
+        }`}
+      >
+        <nav className='flex flex-col items-start p-4 w-3/4 md:w-1/2 h-full'>
+          <button
+            className='text-white self-end mb-4'
+            onClick={toggleMobileMenu}
+          >
+            ✖️
+          </button>
+          <ul className='flex flex-col space-y-4 mt-8 w-full h-full'>
+            <li>
+              <a
+                href='#marketplace'
+                className='text-white text-lg hover:underline'
+              >
+                Marketplace
+              </a>
+            </li>
+            <li>
+              <a
+                href='#collection'
+                className='text-white text-lg hover:underline'
+              >
+                Collection
+              </a>
+            </li>
+            <li>
+              <a
+                href='#community'
+                className='text-white text-lg hover:underline'
+              >
+                Community
+              </a>
+            </li>
+            <li>
+              <a href='#create' className='text-white text-lg hover:underline'>
+                Create
+              </a>
+            </li>
+            <li>
+              <Button className='text-white rounded-full p-4 bg-[#2F80ED] hover:bg-white hover:text-[#2F80ED]'>
+                Connect Wallet
+              </Button>
+            </li>
+          </ul>
+        </nav>
+      </div>
+
       <div>
         <Hero />
       </div>
@@ -63,24 +142,24 @@ const Header = () => {
 
 const Hero = () => {
   return (
-    <div className='flex flex-col md:flex-row items-center justify-between px-6 md:px-[10rem] py-10 md:py-[0rem] bg-gradient-to-r from-[#23054D] to-[#23054D] text-white'>
+    <div className='flex flex-col md:flex-row items-center justify-between px-4 md:px-[8rem] py-16 md:py-[0rem] bg-gradient-to-r from-[#23054D] to-[#23054D] text-white text-center md:text-start'>
       <div className='md:w-1/2'>
-        <h1 className='text-5xl md:text-5xl md:w-[65%] font-bold mb-[2.3rem]'>
+        <h1 className='text-2xl sm:text-5xl font-bold mb-4'>
           Discover Collect, & Sell
           <span className='bg-gradient-to-r ml-2 from-[#69EACB] via-[#EACCF8] to-[#6654F1] bg-clip-text text-transparent'>
             Extraordinary
           </span>{' '}
           NFTs
         </h1>
-        <p className='mb-[3.2rem] text-md md:text-base font-poppins md:w-[70%]'>
+        <p className='mb-6 text-md sm:text-lg font-poppins md:w-[70%]'>
           The Leading NFT Marketplace On Ethereum. Home To The Next Generation
           Of Digital Creators. Discover The Best NFT Collections.
         </p>
-        <div className='space-x-4'>
+        <div className='flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4'>
           <button className='bg-blue-500 text-white px-8 py-2 rounded-full hover:bg-blue-400'>
             Explore
           </button>
-          <button className='bg-transparent border-[1px] border-white  text-white px-8 py-2 rounded-full'>
+          <button className='bg-transparent border-[1px] border-white text-white px-8 py-2 rounded-full'>
             Create
           </button>
         </div>
@@ -112,14 +191,13 @@ const Hero = () => {
 
 const WalletLogos = () => {
   return (
-    <div className='flex-col flex justify-center items-center space-y-10 py-8'>
-      <div className='flex space-x-8'>
+    <div className='flex-col md:flex justify-center items-center space-y-10  py-8'>
+      <div className='md:flex flex-wrap mx-auto space-x-6 md:space-x-16'>
         <img src={metamaskLogo} alt='MetaMask' className='h-10' />
         <img src={trustWalletLogo} alt='Trust Wallet' className='h-10' />
         <img src={walletConnectLogo} alt='WalletConnect' className='h-10' />
       </div>
-      <div className='flex space-x-8 '>
-        {' '}
+      <div className='md:flex space-x-4 md:space-x-8 '>
         <img src={exodusLogo} alt='Exodus' className='h-10' />
         <img src={safePalLogo} alt='SafePal' className='h-10' />
       </div>
