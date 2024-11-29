@@ -19,7 +19,7 @@ const Header = () => {
 
   return (
     <>
-      <header className='fixed top-0 left-0 right-0 md:flex flex-col md:flex-row items-center justify-between px-1 md:px-[8rem] md:py-[1.5rem] text-white shadow-lg bg-[#23054d] z-50'>
+      <header className='fixed top-0 left-0 right-0 md:flex flex-col md:flex-row items-center justify-between px-2 py-4 md:px-[8rem] md:py-[1.5rem] text-white shadow-lg bg-[#23054d] z-50'>
         <div className='flex justify-between px-4 p-4  '>
           <div>
             {' '}
@@ -144,7 +144,7 @@ const Hero = () => {
   return (
     <div className='flex flex-col md:flex-row items-center justify-between px-4 md:px-[8rem] py-16 md:py-[0rem] bg-gradient-to-r from-[#23054D] to-[#23054D] text-white text-center md:text-start'>
       <div className='md:w-1/2'>
-        <h1 className='text-2xl sm:text-5xl font-bold mb-4'>
+        <h1 className='text-2xl mt-[4rem] sm:text-5xl font-bold mb-4'>
           Discover Collect, & Sell
           <span className='bg-gradient-to-r ml-2 from-[#69EACB] via-[#EACCF8] to-[#6654F1] bg-clip-text text-transparent'>
             Extraordinary
@@ -180,7 +180,7 @@ const Hero = () => {
           </div>
         </div>
       </div>
-      <div className='md:w-1/2 mt-10 md:mt-0'>
+      <div className='md:w-1/2 mt-10 md:mt-0 '>
         <img src={heroImage} alt='Hero' className='w-full h-auto rounded-lg' />
       </div>
     </div>
@@ -191,13 +191,13 @@ const Hero = () => {
 
 const WalletLogos = () => {
   return (
-    <div className='flex-col md:flex justify-center items-center space-y-10  py-8'>
-      <div className='md:flex flex-wrap mx-auto space-x-6 md:space-x-16'>
+    <div className='flex-col md:flex justify-center items-center md:space-y-10  py-4'>
+      <div className='md:flex flex-wrap mx-auto space-x-2 w-1/2 md:space-x-16'>
         <img src={metamaskLogo} alt='MetaMask' className='h-10' />
         <img src={trustWalletLogo} alt='Trust Wallet' className='h-10' />
         <img src={walletConnectLogo} alt='WalletConnect' className='h-10' />
       </div>
-      <div className='md:flex space-x-4 md:space-x-8 '>
+      <div className='md:flex space-x-2 w-1/2 flex-wrap md:space-x-8 '>
         <img src={exodusLogo} alt='Exodus' className='h-10' />
         <img src={safePalLogo} alt='SafePal' className='h-10' />
       </div>

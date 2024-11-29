@@ -76,7 +76,7 @@ function Carousel() {
       </h2>
       <Slider {...settings}>
         {nftData.map(nft => (
-          <div key={nft.id} className='p-2 md:p-4'>
+          <div key={nft.id} className='p-8 md:p-8'>
             <div className='bg-white rounded-lg shadow-lg p-4 flex flex-col items-center'>
               <img
                 src={nft.image}

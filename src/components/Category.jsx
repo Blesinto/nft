@@ -8,18 +8,18 @@ import {
 
 const Category = () => {
   return (
-    <div className='px-[10rem] py-[4rem]'>
+    <div className='md:px-[10rem] md:py-[4rem]'>
       <h2 className='text-2xl font-bold mb-4 text-center'>Collectibles</h2>
       <Carousel>
         <CarouselContent className='flex'>
-          <CarouselItem className='  md:basis-1/2 lg:basis-1/3 flex flex-col items-center bg-purple-200 text-white p-4 rounded-lg mx-2'>
+          <CarouselItem className=' basis-3/3 w-1/2 md:basis-1/2 lg:basis-1/3 flex flex-col items-center bg-purple-200 text-white p-4 rounded-lg mx-2'>
             {' '}
             <Art />
           </CarouselItem>
-          <CarouselItem className='md:basis-1/2 lg:basis-1/3 flex flex-col items-center bg-purple-800 text-white p-4 rounded-lg mx-2'>
+          <CarouselItem className='basis-3/3 w-1/2 md:basis-1/2 lg:basis-1/3 flex flex-col items-center bg-purple-800 text-white p-4 rounded-lg mx-2'>
             <Collect />
           </CarouselItem>
-          <CarouselItem className='md:basis-1/2 lg:basis-1/3 flex flex-col items-center bg-purple-800 text-white p-4 rounded-lg mx-2'>
+          <CarouselItem className=' basis-3/3 w-1/2 md:basis-1/2 lg:basis-1/3 flex flex-col items-center bg-purple-800 text-white p-4 rounded-lg mx-2'>
             <Vitual />
           </CarouselItem>
         </CarouselContent>
