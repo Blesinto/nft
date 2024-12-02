@@ -33,8 +33,8 @@ const Creators = () => {
         </TabsList>
 
         <div className='tabs-content-container overflow-hidden'>
-          <TabsContent value='art' className='text-white p-4 md:p-8 lg:p-12'>
-            <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 px-4 py-8  md:px-[8rem] md:py-[4rem]'>
+          <TabsContent value='art' className='text-white p-4  md:p-8 lg:p-12'>
+            <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 px-4 py-[6rem]  md:px-[8rem] md:py-[4rem]'>
               {collections.map(collection => (
                 <CollectionCard key={collection.id} collection={collection} />
               ))}
@@ -57,7 +57,7 @@ const Creators = () => {
           </TabsContent>
         </div>
       </Tabs>
-      <div className='flex justify-center items-center mt-8 md:mt-12'>
+      <div className='flex justify-center items-center  md:mt-12'>
         <button className='bg-transparent border-[1px] border-white text-white px-6 py-2 rounded-full hover:bg-gray-100 transition duration-300'>
           see more
         </button>
