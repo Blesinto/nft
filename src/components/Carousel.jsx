@@ -1,6 +1,7 @@
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
+import nftimg1 from '../assets/col-3.png';
 
 // Sample NFT data
 const nftData = [
@@ -11,7 +12,7 @@ const nftData = [
     from: '4.12 ETH',
     price: '$103,025',
     change: '-2.25%',
-    image: 'path/to/cryptopunk.png', // Replace with actual image path
+    image: nftimg1,
   },
   {
     id: 2,
@@ -20,7 +21,7 @@ const nftData = [
     from: '9.45 ETH',
     price: '$180,345',
     change: '+12.45%',
-    image: 'path/to/hape.png', // Replace with actual image path
+    image: nftimg1,
   },
   {
     id: 3,
@@ -29,7 +30,7 @@ const nftData = [
     from: '1.55 ETH',
     price: '$9,945.1',
     change: '+3.57%',
-    image: 'path/to/invisiblefriend.png', // Replace with actual image path
+    image: nftimg1,
   },
   // Add more NFT data as needed
 ];
@@ -118,7 +119,7 @@ function Carousel() {
         ))}
       </Slider>
       <div className='flex justify-center items-center md:mt-[4rem]'>
-        <button className='bg-transparent border-[1px] border-white  text-white px-8 py-2 rounded-full'>
+        <button className='bg-transparent border-[1px] border-white text-white px-8 py-2 rounded-full'>
           see more
         </button>
       </div>
