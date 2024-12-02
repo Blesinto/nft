@@ -10,6 +10,10 @@ import exodusLogo from '../assets/exodus.png';
 import safePalLogo from '../assets/safepal.png';
 import walletConnectLogo from '../assets/walletconnect.png';
 
+// icons
+import { CgMenuRight } from 'react-icons/cg';
+import { LiaTimesSolid } from 'react-icons/lia';
+
 const Header = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
@@ -19,18 +23,18 @@ const Header = () => {
 
   return (
     <>
-      <header className='fixed top-0 left-0 right-0 md:flex flex-col md:flex-row items-center justify-between px-2 py-4 md:px-[8rem] md:py-[1.5rem] text-white shadow-lg bg-[#23054d] z-50'>
+      <header className='fixed top-0 left-0 right-0 md:flex flex-col md:flex-row justify-between px-2 py-2 md:px-[8rem] md:py-[1rem] text-white shadow-lg bg-[#23054d] z-50'>
         <div className='flex justify-between px-4 p-4  '>
           <div>
             {' '}
-            <img src={logo} alt='Logo' className='h-10 md:h-12 mr-2' />
+            <img src={logo} alt='Logo' className='h-8 md:h-10 mr-2' />
           </div>
           <div className='md:hidden'>
             <button
-              className='text-white focus:outline-none'
+              className='text-white focus:outline-none '
               onClick={toggleMobileMenu}
             >
-              ☰
+              <CgMenuRight className='text-[1.9rem]' />
             </button>
           </div>
         </div>
@@ -84,12 +88,12 @@ const Header = () => {
       >
         <nav className='flex flex-col items-start p-4 w-3/4 md:w-1/2 h-full'>
           <button
-            className='text-white self-end mb-4'
+            className='text-white self-end mb-4 text-lg right-6  absolute'
             onClick={toggleMobileMenu}
           >
-            ✖️
+            <LiaTimesSolid className='text-[1.9rem]' />
           </button>
-          <ul className='flex flex-col space-y-4 mt-8 w-full h-full'>
+          <ul className='flex flex-col space-y-8 h-screen mt-8 '>
             <li>
               <a
                 href='#marketplace'
@@ -142,7 +146,7 @@ const Header = () => {
 
 const Hero = () => {
   return (
-    <div className='flex flex-col md:flex-row items-center justify-between px-4 md:px-[8rem] py-16 md:py-[0rem] bg-gradient-to-r from-[#23054D] to-[#23054D] text-white text-center md:text-start'>
+    <div className='flex flex-col md:flex-row items-center justify-between px-4 md:px-[10rem] py-16 md:py-[2rem] bg-gradient-to-r from-[#23054D] to-[#23054D] text-white text-center md:text-start'>
       <div className='md:w-1/2'>
         <h1 className='text-2xl mt-[4rem] sm:text-5xl font-bold mb-4'>
           Discover Collect, & Sell
@@ -165,7 +169,7 @@ const Hero = () => {
         </div>
 
         {/* Statistics Section */}
-        <div className='flex text-center mt-8 space-x-6 mx-auto'>
+        <div className='flex justify-center md:justify-start text-center mt-8 space-x-6 mx-auto'>
           <div>
             <h2 className='text-[1.3rem] font-bold'>432K+</h2>
             <p>Collections</p>
@@ -180,7 +184,7 @@ const Hero = () => {
           </div>
         </div>
       </div>
-      <div className='md:w-1/2 mt-10 md:mt-0 '>
+      <div className='md:w-1/2 mt-10  '>
         <img src={heroImage} alt='Hero' className='w-full h-auto rounded-lg' />
       </div>
     </div>
@@ -191,15 +195,19 @@ const Hero = () => {
 
 const WalletLogos = () => {
   return (
-    <div className='flex-col md:flex justify-center items-center md:space-y-10  py-4'>
-      <div className='md:flex flex-wrap mx-auto space-x-2 w-1/2 md:space-x-16'>
-        <img src={metamaskLogo} alt='MetaMask' className='h-10' />
-        <img src={trustWalletLogo} alt='Trust Wallet' className='h-10' />
-        <img src={walletConnectLogo} alt='WalletConnect' className='h-10' />
+    <div className='flex md:flex-col  md:justify-center justify-between  items-center md:space-y-10  py-4'>
+      <div className='md:flex mx-8  md:space-x-16'>
+        <img src={metamaskLogo} alt='MetaMask' className='md:h-10 h-8' />
+        <img src={trustWalletLogo} alt='Trust Wallet' className='md:h-10 h-8' />
+        <img
+          src={walletConnectLogo}
+          alt='WalletConnect'
+          className='md:h-10 h-8'
+        />
       </div>
-      <div className='md:flex space-x-2 w-1/2 flex-wrap md:space-x-8 '>
-        <img src={exodusLogo} alt='Exodus' className='h-10' />
-        <img src={safePalLogo} alt='SafePal' className='h-10' />
+      <div className='md:flex mx-8  md:space-x-8 md:justify-center '>
+        <img src={exodusLogo} alt='Exodus' className='md:h-10 h-8' />
+        <img src={safePalLogo} alt='SafePal' className='md:h-10 h-8' />
       </div>
     </div>
   );

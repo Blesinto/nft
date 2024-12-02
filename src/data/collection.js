@@ -1,9 +1,17 @@
+import top1 from '../assets/top_1.png';
+import top2 from '../assets/top_2.png';
+import top3 from '../assets/top_3.png';
+import top4 from '../assets/top_4.png';
+import top5 from '../assets/top_5.png';
+import top6 from '../assets/top_6.png';
+import top7 from '../assets/top_7.png';
+import top8 from '../assets/top_8.png';
 
 const collections = [
   {
     id: 1,
     name: 'COOLGUYZZ',
-    image: './src/assets/top_1.png',
+    image: top1,
     eth: '1.5 ETH',
     price: '$2045.12',
     floorPrice: 'Floor Price',
@@ -12,7 +20,7 @@ const collections = [
   {
     id: 2,
     name: 'gangstaboi v.1',
-    image: './src/assets/top_2.png',
+    image: top2,
     eth: '2.53 ETH',
     price: '$4487',
     floorPrice: 'Floor Price',
@@ -21,7 +29,7 @@ const collections = [
   {
     id: 3,
     name: 'HyperApe',
-    image: './src/assets/top_3.png',
+    image: top3,
     eth: '1.31 ETH',
     price: '$1743.4',
     floorPrice: 'Floor Price',
@@ -30,7 +38,7 @@ const collections = [
   {
     id: 4,
     name: 'LyoddS1',
-    image: './src/assets/top_4.png',
+    image: top4,
     eth: '1.156 ETH',
     price: '$1670',
     floorPrice: 'Floor Price',
@@ -39,7 +47,7 @@ const collections = [
   {
     id: 5,
     name: 'Azuki 3D',
-    image: './src/assets/top_5.png',
+    image: top5,
     eth: '1.5 ETH',
     price: '$1907',
     floorPrice: 'Floor Price',
@@ -48,7 +56,7 @@ const collections = [
   {
     id: 6,
     name: 'CuteApe White',
-    image: './src/assets/top_6.png',
+    image: top6,
     eth: '0.045 ETH',
     price: '$245.6',
     floorPrice: 'Floor Price',
@@ -57,7 +65,7 @@ const collections = [
   {
     id: 7,
     name: 'SneakerHead Vol.1',
-    image: './src/assets/top_7.png',
+    image: top7,
     eth: '1.4 ETH',
     price: '$1790',
     floorPrice: 'Floor Price',
@@ -66,7 +74,7 @@ const collections = [
   {
     id: 8,
     name: 'cvltB3AR',
-    image: './src/assets/top_8.png',
+    image: top8,
     eth: '0.88 ETH',
     price: '$545',
     floorPrice: 'Floor Price',

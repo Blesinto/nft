@@ -1,3 +1,7 @@
+import artcle1 from '../assets/art_img1.png';
+import artcle2 from '../assets/art_img2.png';
+import artcle3 from '../assets/art_img3.png';
+
 const Art = () => {
   return (
     <div className=' text-white md:px-[10rem] md:py-[4rem]'>
@@ -10,7 +14,7 @@ const Art = () => {
       <div className='grid grid-cols-1 p-8 md:p-0 sm:grid-cols-2 lg:grid-cols-3 gap-6'>
         <div className='rounded-lg overflow-hidden shadow-lg'>
           <img
-            src='./src/assets/art_img3.png'
+            src={artcle3}
             alt='Article 1'
             className='w-full h-48 object-cover'
           />
@@ -24,7 +28,7 @@ const Art = () => {
 
         <div className='rounded-lg overflow-hidden shadow-lg'>
           <img
-            src='./src/assets/art_img2.png'
+            src={artcle2}
             alt='Article 2'
             className='w-full h-48 object-cover'
           />
@@ -38,7 +42,7 @@ const Art = () => {
 
         <div className='rounded-lg overflow-hidden shadow-lg'>
           <img
-            src='./src/assets/art_img1.png'
+            src={artcle1}
             alt='Article 3'
             className='w-full h-48 object-cover'
           />
