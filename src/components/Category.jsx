@@ -104,19 +104,19 @@ const Collect = () => {
       <div className='flex justify-between gap-4 '>
         <div className='grid grid-col-1'>
           <img
-            src='./src/assets/Art-1.png'
+             src={art1}
             alt='Collectible 1'
             className='w-full h-auto rounded-lg mb-2'
           />
           <img
-            src='./src/assets/Art-2.png'
+             src={art2}
             alt='Collectible 1'
             className='w-full h-auto rounded-lg mb-2'
           />
         </div>
         <div className='grid grid-col-1'>
           <img
-            src='./src/assets/Art-3.png'
+             src={art3}
             alt='Collectible 1'
             className='w-full h-auto rounded-lg mb-2'
           />
