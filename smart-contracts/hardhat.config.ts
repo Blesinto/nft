@@ -1,29 +1,40 @@
-// import type { HardhatUserConfig } from "hardhat/config";
-// import "@nomicfoundation/hardhat-toolbox-viem";
-
-// const config: HardhatUserConfig = {
-//   solidity: "0.8.28",
-// };
-
-// export default config;
-
 import { HardhatUserConfig } from "hardhat/config";
-import "@nomiclabs/hardhat-ethers";
 import "@nomiclabs/hardhat-etherscan";
-import * as dotenv from "dotenv";
-
-dotenv.config();
+import "@nomiclabs/hardhat-ethers";
+import "@typechain/hardhat";
+import "dotenv/config";
 
 const config: HardhatUserConfig = {
-  solidity: "0.8.0",
+  solidity: {
+    compilers: [
+      {
+        version: "0.8.20", // Matches OpenZeppelin dependencies
+        settings: {
+          optimizer: {
+            enabled: true,
+            runs: 200,
+          },
+        },
+      },
+      {
+        version: "0.8.0", // Matches your contract's pragma
+        settings: {
+          optimizer: {
+            enabled: true,
+            runs: 200,
+          },
+        },
+      },
+    ],
+  },
   networks: {
     sepolia: {
       url: process.env.SEPOLIA_RPC || "",
-      accounts: [process.env.SEPOLIA_PRIVATE_KEY || ""],
+      accounts: process.env.SEPOLIA_PRIVATE_KEY ? [process.env.SEPOLIA_PRIVATE_KEY] : [],
     },
   },
   etherscan: {
-    apiKey: process.env.ETHERSCAN_API_KEY || "",
+    apiKey: process.env.ETHERSCAN_API_KEY,
   },
 };
 

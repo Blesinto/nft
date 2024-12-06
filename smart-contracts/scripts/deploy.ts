@@ -1,24 +1,25 @@
 import { ethers } from "hardhat";
-
+import { RemixCancunNFT } from "../typechain-types";
 async function main() {
-  // Get the signer (your wallet)
-  const [deployer] = await ethers.getSigners();
+  // Get the deployer's wallet
   
+  const [deployer] = await ethers.getSigners();
+
   console.log("Deploying contracts with the account:", deployer.address);
 
-  // Get the contract factory
+  // Compile and deploy the contract
   const NFT = await ethers.getContractFactory("RemixCancunNFT");
-
-  // Deploy the contract
-  const nft = await NFT.deploy();
+  const nft = (await NFT.deploy(10)) as RemixCancunNFT;
+  await nft.deployed();
 
   console.log("Contract deployed to address:", nft.address);
-  
-  // Optionally, mint an NFT as a test (ensure mintNFT method exists in your contract)
-  const tokenURI = "https://example.com/token-uri"; // Replace with your token URI
-  const tx = await nft.mintNFT(deployer.address, tokenURI);
-  await tx.wait();
-  console.log("NFT Minted:", tx.hash);
+
+  // Mint a test NFT (for testing purposes)
+  const testTokenURI = "https://example.com/token-uri";
+  const mintTx = await nft.mintNFT(deployer.address, testTokenURI);
+  await mintTx.wait();
+
+  console.log("NFT Minted:", mintTx.hash);
 }
 
 // Run the script
