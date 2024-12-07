@@ -3,6 +3,7 @@ import { Button } from './ui/button';
 import { useState, useEffect } from 'react';
 import { ethers } from 'ethers';
 
+
 // images
 import heroImage from '../assets/hero_img.png';
 import metamaskLogo from '../assets/metamask.png';
@@ -19,6 +20,8 @@ const Header = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isConnected, setIsConnected] = useState(false);
   const [account, setAccount] = useState('');
+  const [isMinting, setIsMinting] = useState(false);
+  const [transactionHash, setTransactionHash] = useState('');
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
@@ -51,6 +54,50 @@ const Header = () => {
     }
   };
 
+  // Disconnect wallet
+  const disconnectWallet = () => {
+    setAccount('');
+    setIsConnected(false);
+    alert('Wallet disconnected successfully.');
+  };
+
+  // Mint NFT
+  const mintNFT = async () => {
+    if (!isConnected) {
+      alert('Please connect your wallet first.');
+      return;
+    }
+
+    if (!account) {
+      alert('Account not found.');
+      return;
+    }
+
+    try {
+      const provider = new ethers.BrowserProvider(window.ethereum);
+      const signer = provider.getSigner();
+
+      const contract = new ethers.Contract(
+        '0x47e07892b031e97214701B9cabEcf6F65e378f1e', // Replace with your contract address
+        ['function mint(address to) external returns (uint256)'], // Replace with your ABI
+        signer
+      );
+
+      setIsMinting(true); // Set minting state to true
+
+      const tx = await contract.mint(account); // Mint NFT to connected account
+      setTransactionHash(tx.hash);
+
+      await tx.wait(); // Wait for transaction to be mined
+      alert('NFT minted successfully!');
+    } catch (err) {
+      console.error('Minting failed:', err);
+      alert('Error minting NFT');
+    } finally {
+      setIsMinting(false); // Reset minting state
+    }
+  };
+
   useEffect(() => {
     checkIfWalletIsConnected(); // Check if wallet is already connected when the component mounts
   }, []);
@@ -68,6 +115,7 @@ const Header = () => {
             </button>
           </div>
         </div>
+
         <nav className='hidden md:flex space-x-6'>
           <ul className='flex items-center justify-center space-x-6'>
             <li>
@@ -90,12 +138,19 @@ const Header = () => {
                 Create
               </a>
             </li>
-            {/* Connect Wallet Button */}
+
+            {/* Connect/Disconnect Wallet Button */}
             <li>
               {isConnected ? (
-                <Button className='text-white rounded-full p-4 bg-[#2F80ED] hover:bg-white hover:text-[#2F80ED] transition duration-300'>
-                  {account.slice(0, 6)}...{account.slice(-4)} {/* Show short address */}
-                </Button>
+                <>
+                  <Button
+                    className='text-white rounded-full p-4 bg-[#2F80ED] hover:bg-white hover:text-[#2F80ED] transition duration-300'
+                    onClick={disconnectWallet}
+                  >
+                    Disconnect
+                  </Button>
+                  <span className='text-sm ml-2'>{account.slice(0, 6)}...{account.slice(-4)}</span>
+                </>
               ) : (
                 <Button
                   className='text-white rounded-full p-4 bg-[#2F80ED] hover:bg-white hover:text-[#2F80ED] transition duration-300'
@@ -105,10 +160,24 @@ const Header = () => {
                 </Button>
               )}
             </li>
+
+            {/* Mint NFT Button */}
+            {isConnected && (
+              <li>
+                <Button
+                  className='text-white rounded-full p-4 bg-[#2F80ED] hover:bg-white hover:text-[#2F80ED] transition duration-300'
+                  onClick={mintNFT}
+                  disabled={isMinting}
+                >
+                  {isMinting ? 'Minting...' : 'Mint NFT'}
+                </Button>
+              </li>
+            )}
           </ul>
         </nav>
       </header>
 
+      {/* Mobile Navigation Menu */}
       <div
         className={`fixed inset-0 bg-[#23054d] z-50 transition-transform transform ${
           isMobileMenuOpen ? 'translate-x-0' : '-translate-x-full'
@@ -141,21 +210,6 @@ const Header = () => {
               <a href='#create' className='text-white text-lg hover:underline'>
                 Create
               </a>
-            </li>
-            {/* Connect Wallet Button */}
-            <li>
-              {isConnected ? (
-                <Button className='text-white rounded-full p-4 bg-[#2F80ED] hover:bg-white hover:text-[#2F80ED] transition duration-300'>
-                  {account.slice(0, 6)}...{account.slice(-4)} {/* Show short address */}
-                </Button>
-              ) : (
-                <Button
-                  className='text-white rounded-full p-4 bg-[#2F80ED] hover:bg-white hover:text-[#2F80ED] transition duration-300'
-                  onClick={connectWallet}
-                >
-                  Connect Wallet
-                </Button>
-              )}
             </li>
           </ul>
         </nav>
