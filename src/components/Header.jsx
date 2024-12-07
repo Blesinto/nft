@@ -2,6 +2,8 @@ import logo from '../assets/logo.png';
 import { Button } from './ui/button';
 import { useState, useEffect } from 'react';
 import { ethers } from 'ethers';
+import RemixCancunNFT from '../../smart-contracts/artifacts/contracts/Nft.sol/RemixCancunNFT.json';
+
 
 
 // images
@@ -78,8 +80,8 @@ const Header = () => {
       const signer = provider.getSigner();
 
       const contract = new ethers.Contract(
-        '0x47e07892b031e97214701B9cabEcf6F65e378f1e', // Replace with your contract address
-        ['function mint(address to) external returns (uint256)'], // Replace with your ABI
+        '0x47e07892b031e97214701B9cabEcf6F65e378f1e', // deployed contract address
+        RemixCancunNFT.abi, // ABI
         signer
       );
 
